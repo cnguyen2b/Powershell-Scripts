@@ -1,0 +1,2 @@
+$groups = 'GROUP1', 'GROUP2' , 'GROUP3'
+$groups | foreach {add-ADGroupMember $_ -Members username} 
