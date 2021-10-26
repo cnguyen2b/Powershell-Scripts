@@ -1,0 +1,6 @@
+$StaffA = Get-ADGroupMember – Identity “StaffA” | Select-Object –Property name| Sort-Object –Property name
+$StaffB = Get-ADGroupMember – Identity “StaffA” | Select-Object –Property name| Sort-Object –Property name
+$StaffC = Get-ADGroupMember – Identity “StaffA” | Select-Object –Property name| Sort-Object –Property name
+
+$all = $StaffA + $StaffB + $StaffC
+$all | Group-Object –Property name –NoElement | where {$_. count –gt 1}
