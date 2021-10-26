@@ -1,0 +1,9 @@
+Get-ADGroup -SearchBase  'OU=crm2016dev,OU=groups,DC=ansi,DC=org' -filter {GroupCategory -eq "Security"} | Where-Object -Property SamAccountName -Like 'privusergroup*' | % {Add-ADGroupMember -Identity $_.SamAccountName -Members username }
+
+Finding Duplicates in Different OUs:
+$StaffA = Get-ADGroupMember – Identity “StaffA” | Select-Object –Property name| Sort-Object –Property name
+$StaffB = Get-ADGroupMember – Identity “StaffA” | Select-Object –Property name| Sort-Object –Property name
+$StaffC = Get-ADGroupMember – Identity “StaffA” | Select-Object –Property name| Sort-Object –Property name
+
+$all = $StaffA + $StaffB + $StaffC
+$all | Group-Object –Property name –NoElement | where {$_. count –gt 1}
