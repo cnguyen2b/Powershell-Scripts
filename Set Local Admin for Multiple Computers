@@ -1,0 +1,3 @@
+$AdminRights = New-PSSession -ComputerName COMPUTERNAME1,COMPUTERNAME2,COMPUTERNAME3, …
+
+Invoke-Command -Session $AdminRights -ScriptBlock { Add-LocalGroupMember -Group "Administrators" -Member "ansi\cnguyen" }
