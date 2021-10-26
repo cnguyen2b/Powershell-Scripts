@@ -1,0 +1,5 @@
+$x = Get-Content C:\temp\NAME.txt
+
+$x | Foreach {Get-ADUser -Filter {UserPrincipalName -like $_ } -Properties *|Select SAMAccountName, emailaddress} | Export-Csv "C:\temp\NAME1.csv" -NoTypeInformation
+
+#The code will export the email address and SAMaccountName of the users to a .CSV file. 
